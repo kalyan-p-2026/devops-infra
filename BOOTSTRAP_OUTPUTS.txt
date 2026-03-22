@@ -1,0 +1,18 @@
+backend_config = <<EOT
+terraform {
+  backend "s3" {
+    bucket         = "techitfactory-tfstate-c5f430f1"
+    key            = "path/to/terraform.tfstate"
+    region         = "ap-south-1"
+    encrypt        = true
+    kms_key_id     = "arn:aws:kms:ap-south-1:517714604258:key/e46e1ffb-6a64-4f5b-a010-b20e5f08a07c"
+    dynamodb_table = "techitfactory-tflock"
+  }
+}
+
+EOT
+kms_key_alias = "alias/techitfactory-tfstate"
+kms_key_arn = "arn:aws:kms:ap-south-1:517714604258:key/e46e1ffb-6a64-4f5b-a010-b20e5f08a07c"
+lock_table_name = "techitfactory-tflock"
+state_bucket_arn = "arn:aws:s3:::techitfactory-tfstate-c5f430f1"
+state_bucket_name = "techitfactory-tfstate-c5f430f1"
